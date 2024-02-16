@@ -39,3 +39,13 @@ Add all the files to the github repository
 ```
 git add .
 ```
+
+To commit the changes
+```
+git commit -m "commit message"
+```
+
+To push files from local to main branch in repo
+```
+git push origin main
+```
