@@ -5,5 +5,4 @@ numpy
 matplotlib
 seaborn
 tensorflow
-pickle
 gunicorn
