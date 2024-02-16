@@ -1,3 +1,108 @@
-<h1>
-    Hello, this is for testing
-</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Netflix Stock Price Prediction API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            font-family: 'Open Sans Condensed', sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .login {
+            margin: 80px auto;
+            width: 300px;
+            padding: 30px 25px;
+            background: white;
+            border: 1px solid #ccc;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 0px #000;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 25px;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            height: 35px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        /* Additional styling for the result text */
+        p {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .response {
+            font-size: 28px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Netflix Stock Price Prediction</h1>
+        <p>Enter the required values</p>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="Open" placeholder="Open" required="required" /><br>
+            <input type="text" name="High" placeholder="High" required="required" /><br>
+            <input type="text" name="Low" placeholder="Low" required="required" /><br>
+            <input type="text" name="Volume" placeholder="Volume" required="required" /><br>
+            <!-- <input type="text" name="NOX" placeholder="NOX" required="required" /><br>
+        <input type="text" name="RM" placeholder="RM" required="required" /><br>
+        <input type="text" name="Age" placeholder="Age" required="required" /><br>
+        <input type="text" name="DIS" placeholder="DIS" required="required" /><br>
+        <input type="text" name="RAD" placeholder="RAD" required="required" /><br>
+        <input type="text" name="TAX" placeholder="TAX" required="required" /><br>
+        <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
+        <input type="text" name="B" placeholder="B" required="required" /><br>
+        <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br> -->
+
+
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+
+        <br>
+        <br>
+
+
+    </div>
+    <p class="response">{{prediction_text}}</p>
+
+</body>
+
+</html>

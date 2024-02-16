@@ -18,12 +18,21 @@ def home():
 @app.route('/predict_api', methods = ['POST'])
 def predict_api():
     data = request.json['data']
-    newdata = scaler.transform(np.array(list(data.values())).reshape(1,-1))
+    newdata = scaler.transform(np.array(list(data.values())).reshape(1, -1))
     prediction = model.predict(newdata)
     output = prediction[0].tolist()
     # print(output)
     return jsonify(output)
     # return jsonify({'prediction': output})
 
+@app.route('/predict', methods = ['POST'])
+def predict():
+    data = [float(val) for val in request.form.values()]
+    final_input = scaler.transform(np.array(data).reshape(1, -1))
+    prediction = model.predict(final_input)
+    output = prediction[0].tolist()
+    return render_template("home.html",prediction_text = "The predicted Netflix stock value is {}".format(output[0]))
+
 if __name__=="__main__":
     app.run(debug = True)
+
